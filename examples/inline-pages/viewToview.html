@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>view间的连接和跳转</title>
+    <!-- Path to Framework7 Library CSS-->
+    <link rel="stylesheet" href="../../dist/css/framework7.ios.min.css">
+    <!-- Path to Framework7 iOS related color styles -->
+    <link rel="stylesheet" href="../../dist/css/framework7.ios.colors.min.css">
+    <!-- Path to your custom app styles-->
+    <link rel="stylesheet" href="css/my-app.css">
+  </head>
+  <body>
+     
+     <!-- Status bar overlay for full screen mode (PhoneGap) -->
+    <div class="statusbar-overlay"></div>
+    <!-- Panels overlay-->
+    <div class="panel-overlay"></div>
+    <!-- Left panel with reveal effect-->
+    <div class="panel panel-left panel-reveal">
+      <div class="content-block">
+        <p>Left panel content goes here</p>
+      </div>
+    </div>
+
+
+    <div class="views">
+
+      <div class="view view-main left-view">
+
+        <div class="pages navbar-through toolbar-through">
+          <div data-page="index" class="page ">
+            <div class="page-content">
+              <p>Page content goes here</p>
+                <a href="about.html"> About </a>
+                <a href="services.html"> Services </a>
+                
+                <!-- This link will load pages to Right view -->
+                <a href="products.html" data-view=".right-view"> Products </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="view  right-view">
+ 
+
+        <div class="pages navbar-through toolbar-through">
+          <div data-page="index" class="page">
+            <div class="page-content">
+              <p>Page content goes here</p>
+              <!-- These links will load pages to this Right view -->
+              <a href="products.html"> Products </a>
+              <a href="contacts.html"> Contacts </a>
+              
+              <!-- This link will load pages to Left view -->
+              <a href="about.html" data-view=".left-view"> About </a>
+              <a href="services.html" data-view=".left-view"> Services </a>
+              
+              <!-- This link will trigger Go Back in Left view -->
+              <a href="#" class="back" data-view=".left-view"> About </a>               
+              
+            </div>
+          </div>
+        </div>
+
+      </div> 
+
+
+    </div>
+
+
+
+    <!-- Path to Framework7 Library JS-->
+    <script type="text/javascript" src="../../dist/js/framework7.min.js"></script>
+    <!-- Path to your app js-->
+    <!-- <script type="text/javascript" src="js/my-app.js"></script> -->
+
+    <script type="text/javascript">
+      
+     // Initialize app and store it to myApp variable for futher access to its methods
+    var myApp = new Framework7({
+      animateNavBackIcon:true
+    });
+    var myApp = new Framework7();
+
+    // We need to use custom DOM library, let's save it to $$ variable:
+    var $$ = Framework7.$;
+
+    // 初始化第一个view
+    var mainView = myApp.addView('.view-main', {
+      // Because we want to use dynamic navbar, we need to enable it for this view:
+      dynamicNavbar: true
+    });
+
+    //初始化第二个view
+    var anotherView = myApp.addView('.right-view', {
+      // Because we want to use dynamic navbar, we need to enable it for this view:
+      dynamicNavbar: true
+    });
+
+     
+      
+    </script>
+  </body>
+</html>
